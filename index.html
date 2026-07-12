@@ -379,6 +379,18 @@ const PRODUCTS = [
       { label:'蝸牛驅除',   basePrice:198, discounts:{} }
     ]
   }
+  {
+    id:'cocobrick110L',
+    category:'nonGranule',
+    name:'椰塊麻布袋110L',
+    image:'images/cocobrick.jpg',
+    unit:'110公升',
+    variants:[
+      { label:'1公分',   basePrice:510, discounts:{} },
+      { label:'2公分',   basePrice:510, discounts:{} },     
+      { label:'3公分',   basePrice:410, discounts:{} }
+    ]
+  }
   // 之後新增商品就是在這裡(或對應分類)繼續加物件
 ];
 
@@ -441,7 +453,8 @@ function renderFeaturedSection(showHomepage){
     return;
   }
 
-  const featured = PRODUCTS.filter(p => p.isNew);
+  // 取「最新加入」的商品:PRODUCTS 陣列裡越後面新增的越新,最多顯示6項,不足6項就全部顯示
+  const featured = PRODUCTS.slice(-6);
   if(featured.length === 0){
     section.style.display = 'none';
     return;
