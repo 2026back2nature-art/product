@@ -124,7 +124,7 @@
     color:var(--stone-500);
     overflow:hidden;
   }
-  .featured-thumb img{width:100%; height:100%; object-fit:cover;}
+  .featured-thumb img{width:100%; height:100%; object-fit:cover; cursor:zoom-in;}
   .featured-name{
     font-size:12px;
     font-weight:600;
@@ -136,10 +136,34 @@
     width:52px; height:52px; border-radius:8px; background:var(--stone-200); flex-shrink:0;
     display:flex; align-items:center; justify-content:center; overflow:hidden; font-size:20px; color:var(--stone-500);
   }
-  .product-thumb img{width:100%; height:100%; object-fit:cover;}
+  .product-thumb img{width:100%; height:100%; object-fit:cover; cursor:zoom-in;}
   .product-title-wrap{flex:1;}
   .product-name{font-size:15px; font-weight:600;}
   .product-cat-tag{font-size:11px; color:var(--stone-500); margin-top:2px;}
+
+  /* ---------- 照片燈箱(點擊放大) ---------- */
+  .lightbox-overlay{
+    position:fixed; inset:0; z-index:100;
+    background:rgba(20,18,14,0.82);
+    display:none;
+    align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .lightbox-overlay.open{display:flex;}
+  .lightbox-overlay img{
+    max-width:100%; max-height:100%;
+    border-radius:8px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    object-fit:contain;
+  }
+  .lightbox-close{
+    position:absolute; top:16px; right:20px;
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(255,255,255,0.15); border:none; color:#fff;
+    font-size:20px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.28);}
 
   .variant-row{
     display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px;
@@ -425,13 +449,20 @@ function renderFeaturedSection(showHomepage){
 
   section.style.display = 'block';
   listEl.innerHTML = featured.map(p => {
-    const thumb = p.image ? `<img src="${p.image}" alt="${p.name}">` : '📦';
+    const thumb = p.image ? `<img src="${p.image}" alt="${p.name}" data-full="${p.image}">` : '📦';
     return `
     <div class="featured-card" data-cat="${p.category}">
       <div class="featured-thumb">${thumb}</div>
       <div class="featured-name">${p.name}</div>
     </div>`;
   }).join('');
+
+  listEl.querySelectorAll('.featured-thumb img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox(img.dataset.full, img.alt);
+    });
+  });
 
   listEl.querySelectorAll('.featured-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -484,7 +515,7 @@ function renderProductList(){
 
 function renderProductCard(product){
   const thumb = product.image
-    ? `<img src="${product.image}" alt="${product.name}">`
+    ? `<img src="${product.image}" alt="${product.name}" data-full="${product.image}">`
     : '📦';
   const rows = product.variants.map(v => {
     const price = currentPriceFor(v);
@@ -531,6 +562,34 @@ function attachListenersWithin(container){
   });
   container.querySelectorAll('.qty-input').forEach(input => {
     input.addEventListener('input', () => setQty(input.dataset.key, input.value));
+  });
+  attachLightboxWithin(container);
+}
+
+/* ---------- 照片燈箱(點擊放大) ---------- */
+function openLightbox(src, alt){
+  const overlay = document.getElementById('lightbox-overlay');
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  img.alt = alt || '';
+  overlay.classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox-overlay').classList.remove('open');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-overlay').addEventListener('click', (e) => {
+    if(e.target.id === 'lightbox-overlay') closeLightbox();
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') closeLightbox();
+});
+
+function attachLightboxWithin(container){
+  container.querySelectorAll('img[data-full]').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.dataset.full, img.alt));
   });
 }
 
@@ -680,6 +739,11 @@ function render(){
 renderCategoryGrid();
 render();
 </script>
+
+<div id="lightbox-overlay" class="lightbox-overlay">
+  <button type="button" class="lightbox-close" id="lightbox-close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 </body>
 </html>
