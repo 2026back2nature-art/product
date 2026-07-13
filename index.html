@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>訂購系統</title>
+<title>荃富園藝｜最新商品＆優惠專區</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -41,6 +41,8 @@
     box-shadow:0 2px 10px rgba(0,0,0,0.15);
   }
   .top-bar-inner{max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:8px;}
+  .brand-header{display:flex;align-items:center;gap:12px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,.15);} .brand-header img{width:42px;height:42px;border-radius:10px;background:#fff;padding:4px;object-fit:contain}.brand-title{font-size:20px;font-weight:700;color:#fff}.brand-sub{font-size:12px;color:#d6f0d3;margin-top:2px}
+
   .top-bar label{font-size:11px; letter-spacing:0.04em; color:#C7D0D2; text-transform:uppercase; font-weight:600;}
   .code-row{display:flex; gap:8px;}
   .code-row input{
@@ -250,7 +252,7 @@
 <body>
 
 <div class="top-bar">
-  <div class="top-bar-inner">
+  <div class="top-bar-inner"><div class="brand-header"><img src="images/quanfuicon.png" alt="荃富園藝Logo"><div><div class="brand-title">荃富園藝</div><div class="brand-sub">最新商品 &amp; 優惠專區</div></div></div>
     <div>
       <label for="discount-code">客戶優惠代碼</label>
       <div class="code-row">
