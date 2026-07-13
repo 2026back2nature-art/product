@@ -205,6 +205,7 @@
     font-size:16px; font-weight:600; font-family:'Space Grotesk',sans-serif; cursor:pointer; margin-top:6px;
   }
   .submit-btn:hover{background:var(--basalt-dark);}
+  .submit-btn:disabled{opacity:0.6; cursor:not-allowed;}
   .error-text{color:var(--error); font-size:13px; margin-top:-6px; margin-bottom:10px; display:none;}
   .error-text.show{display:block;}
 
@@ -220,6 +221,11 @@
   }
   .copy-btn:hover{background:var(--basalt); color:#fff;}
   .copy-btn.copied{background:var(--moss); border-color:var(--moss); color:#fff;}
+
+  .send-status{font-size:13px; margin-top:10px; text-align:center; min-height:18px;}
+  .send-status.ok{color:var(--moss);}
+  .send-status.err{color:var(--error);}
+  .send-status.pending{color:var(--stone-500);}
 
   .cart-bar{
     position:fixed; bottom:0; left:0; right:0; z-index:30;
@@ -305,12 +311,13 @@
     </div>
     <div class="error-text" id="form-error">請填寫姓名、電話、地址,並至少選購一項商品。</div>
     <button class="submit-btn" id="submit-order">送出訂單</button>
+    <div class="send-status" id="send-status"></div>
   </div>
 
   <div class="card" id="order-result">
     <h2 style="font-size:16px; margin-bottom:10px;">訂單內容</h2>
     <div class="result-box" id="result-text"></div>
-    <button class="copy-btn" id="copy-order">複製訂單內容</button>
+    <button class="copy-btn" id="copy-order">複製訂單內容(備用)</button>
   </div>
 
 </main>
@@ -342,7 +349,7 @@ const PRODUCTS = [
   id:'yuanjiao',
   category:'roundPot',
   name:'圓角盆',
-  image:'images/yuanjiao.jpg',
+  image:'yuanjiao.jpg',
   unit:'1個',
   variants:[
     { label:'3號黑色', basePrice:2, discounts:{ TYGH:2, TYWS:2, TCGH:2, TCWS:2 } },
@@ -354,7 +361,7 @@ const PRODUCTS = [
     id:'seedingtray',
     category:'nonRoundPot',
     name:'育苗盤',
-    image:'images/seedingtray.jpg',
+    image:'seedingtray.jpg',
     unit:'20個/捆',
     variants:[
       { label:'育苗盤黑色',   basePrice:28, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
@@ -376,7 +383,18 @@ const PRODUCTS = [
       { label:'培養土25kg',   basePrice:150, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
     ]
   },
-
+  {
+    id:'soiltenkg',
+    category:'nonGranule',
+    name:'培養土 加沙土',
+    image:'images/soiltenkg.jpg',
+    unit:'10/25kg 包',
+    variants:[
+      { label:'培養土10kg',   basePrice:60, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'加沙培養土10kg',   basePrice:70, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'培養土25kg',   basePrice:150, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+    ]
+  },
   {
     id:'granule-pumice-tr',
     category:'granule',
@@ -445,6 +463,9 @@ const PRODUCTS = [
 ];
 
 /* ========================================================= */
+
+// ★ 訂單自動送出到 Google 試算表的網址(Apps Script 部署後的網址)
+const ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw8i1z3RXpotTavf_C4aa8oxJthL1tbq8bF5--3FLr3-kO0zQEEHP0dG9LtW5IqUXkhkw/exec';
 
 let activeCategory = null; // null = 顯示分類總覽
 let searchQuery = '';
@@ -747,12 +768,14 @@ document.getElementById('goto-checkout').addEventListener('click', () => {
   document.getElementById('checkout-card').scrollIntoView({ behavior:'smooth', block:'start' });
 });
 
-document.getElementById('submit-order').addEventListener('click', () => {
+document.getElementById('submit-order').addEventListener('click', function(){
+  const submitBtn = this;
   const name = document.getElementById('cust-name').value.trim();
   const phone = document.getElementById('cust-phone').value.trim();
   const address = document.getElementById('cust-address').value.trim();
   const note = document.getElementById('cust-note').value.trim();
   const errorEl = document.getElementById('form-error');
+  const statusEl = document.getElementById('send-status');
 
   const { grandTotal } = recomputeCart();
   const entries = Object.keys(cart).filter(k => cart[k] > 0);
@@ -782,6 +805,38 @@ document.getElementById('submit-order').addEventListener('click', () => {
   document.getElementById('result-text').textContent = text;
   document.getElementById('order-result').classList.add('show');
   document.getElementById('order-result').scrollIntoView({ behavior:'smooth', block:'start' });
+
+  // ★ 自動送出訂單到 Google 試算表
+  submitBtn.disabled = true;
+  statusEl.textContent = '訂單送出中…';
+  statusEl.className = 'send-status pending';
+
+  const payload = {
+    discountCode: currentCode || '',
+    orderText: text,
+    total: grandTotal,
+    name: name,
+    phone: phone,
+    address: address,
+    note: note
+  };
+
+  fetch(ORDER_ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors', // Apps Script 網頁應用程式不支援讀取回應內容,但資料仍會送達
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload)
+  })
+  .then(() => {
+    statusEl.textContent = '✓ 訂單已自動送出,我們會盡快與您聯繫!';
+    statusEl.className = 'send-status ok';
+    submitBtn.disabled = false;
+  })
+  .catch(() => {
+    statusEl.textContent = '⚠ 自動送出失敗,請按下方「複製訂單內容」後傳給我們。';
+    statusEl.className = 'send-status err';
+    submitBtn.disabled = false;
+  });
 });
 
 document.getElementById('copy-order').addEventListener('click', function(){
@@ -789,7 +844,7 @@ document.getElementById('copy-order').addEventListener('click', function(){
   navigator.clipboard.writeText(text).then(() => {
     this.textContent = '已複製!';
     this.classList.add('copied');
-    setTimeout(() => { this.textContent = '複製訂單內容'; this.classList.remove('copied'); }, 1800);
+    setTimeout(() => { this.textContent = '複製訂單內容(備用)'; this.classList.remove('copied'); }, 1800);
   });
 });
 
