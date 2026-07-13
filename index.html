@@ -339,10 +339,36 @@ const CATEGORIES = [
 // discounts: 對應客戶代碼 -> 該規格的折扣後價格(留空/不寫該代碼 = 該代碼無折扣,顯示原價)
 const PRODUCTS = [
   {
-    id:'soil10kg',
+    id:'seedingtray',
+    category:'nonRoundPot',
+    name:'育苗盤',
+    image:'seedingtray.jpg',
+    unit:'20個/捆',
+    variants:[
+      { label:'育苗盤黑色',   basePrice:28, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'育苗盤白色',   basePrice:38, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'網格育苗盤黑色',   basePrice:30, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'網格育苗盤白色',   basePrice:40, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'加高育苗盤黑色',   basePrice:50, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+    ]
+  },
+  {
+    id:'soiltenkg',
     category:'nonGranule',
     name:'培養土 加沙土',
-    image:'images/soil10kg.jpg',
+    image:'images/soiltenkg.jpg',
+    unit:'10/25kg 包',
+    variants:[
+      { label:'培養土10kg',   basePrice:60, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'加沙培養土10kg',   basePrice:70, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'培養土25kg',   basePrice:150, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+    ]
+  },
+  {
+    id:'soiltenkg',
+    category:'nonGranule',
+    name:'培養土 加沙土',
+    image:'images/soiltenkg.jpg',
     unit:'10/25kg 包',
     variants:[
       { label:'培養土10kg',   basePrice:60, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
