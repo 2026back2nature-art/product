@@ -339,6 +339,18 @@ const CATEGORIES = [
 // discounts: 對應客戶代碼 -> 該規格的折扣後價格(留空/不寫該代碼 = 該代碼無折扣,顯示原價)
 const PRODUCTS = [
   {
+  id:'yuanjiao',
+  category:'roundPot',
+  name:'圓角盆',
+  image:'yuanjiao.jpg',
+  unit:'1個',
+  variants:[
+    { label:'3號黑色', basePrice:2, discounts:{ TYGH:2, TYWS:2, TCGH:2, TCWS:2 } },
+    { label:'3號白色', basePrice:3, discounts:{ TYGH:3, TYWS:3, TCGH:3, TCWS:3 } },
+  ]
+},
+
+{
     id:'seedingtray',
     category:'nonRoundPot',
     name:'育苗盤',
