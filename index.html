@@ -339,6 +339,18 @@ const CATEGORIES = [
 // discounts: 對應客戶代碼 -> 該規格的折扣後價格(留空/不寫該代碼 = 該代碼無折扣,顯示原價)
 const PRODUCTS = [
   {
+    id:'soil10kg',
+    category:'nonGranule',
+    name:'培養土 加沙土',
+    image:'images/soil10kg.jpg',
+    unit:'10/25kg 包',
+    variants:[
+      { label:'培養土10kg',   basePrice:60, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'加沙培養土10kg',   basePrice:70, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'培養土25kg',   basePrice:150, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+    ]
+  },
+  {
     id:'granule-pumice-tr',
     category:'granule',
     name:'土耳其白火山石',
