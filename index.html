@@ -140,6 +140,8 @@
   .product-title-wrap{flex:1;}
   .product-name{font-size:15px; font-weight:600;}
   .product-cat-tag{font-size:11px; color:var(--stone-500); margin-top:2px;}
+  .product-desc{font-size:13px; color:var(--stone-500); line-height:1.5; margin:8px 0 10px;}
+  .product-card.highlight{box-shadow:0 0 0 2px var(--ochre); border-color:var(--ochre);}
 
   /* ---------- 照片燈箱(點擊放大) ---------- */
   .lightbox-overlay{
@@ -346,47 +348,10 @@ const CATEGORIES = [
 // discounts: 對應客戶代碼 -> 該規格的折扣後價格(留空/不寫該代碼 = 該代碼無折扣,顯示原價)
 const PRODUCTS = [
   {
-  id:'yuanjiao',
-  category:'roundPot',
-  name:'圓角盆',
-  image:'yuanjiao.jpg',
-  unit:'1個',
-  variants:[
-    { label:'3號黑色', basePrice:2, discounts:{ TYGH:2, TYWS:2, TCGH:2, TCWS:2 } },
-    { label:'3號白色', basePrice:3, discounts:{ TYGH:3, TYWS:3, TCGH:3, TCWS:3 } },
-  ]
-},
-
-{
-    id:'seedingtray',
-    category:'nonRoundPot',
-    name:'育苗盤',
-    image:'seedingtray.jpg',
-    unit:'20個/捆',
-    variants:[
-      { label:'育苗盤黑色',   basePrice:28, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-      { label:'育苗盤白色',   basePrice:38, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-      { label:'網格育苗盤黑色',   basePrice:30, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-      { label:'網格育苗盤白色',   basePrice:40, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-      { label:'加高育苗盤黑色',   basePrice:50, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-    ]
-  },
-  {
     id:'soiltenkg',
     category:'nonGranule',
     name:'培養土 加沙土',
-    image:'images/soiltenkg.jpg',
-    unit:'10/25kg 包',
-    variants:[
-      { label:'培養土10kg',   basePrice:60, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-      { label:'加沙培養土10kg',   basePrice:70, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-      { label:'培養土25kg',   basePrice:150, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-    ]
-  },
-  {
-    id:'soiltenkg',
-    category:'nonGranule',
-    name:'培養土 加沙土',
+    description:'請填寫商品說明',
     image:'images/soiltenkg.jpg',
     unit:'10/25kg 包',
     variants:[
@@ -399,6 +364,7 @@ const PRODUCTS = [
     id:'granule-pumice-tr',
     category:'granule',
     name:'土耳其白火山石',
+    description:'請填寫商品說明',
     image:'images/pumice.jpg',
     unit:'25kg 包',
     variants:[
@@ -412,6 +378,7 @@ const PRODUCTS = [
     id:'granule-perlite',
     category:'granule',
     name:'珍珠石原裝包60-70L',
+    description:'請填寫商品說明',
     image:'images/perlite.jpg',
     unit:'60-70L/ 包',
     variants:[
@@ -424,6 +391,7 @@ const PRODUCTS = [
     category:'fertilizer',
     name:'豁去病(殺菌原液)',
     isNew:true,
+    description:'請填寫商品說明',
     image:'images/huoqubing.jpg',
     unit:'瓶',
     variants:[
@@ -437,6 +405,7 @@ const PRODUCTS = [
     id:'fertilizer-spray-500',
     category:'fertilizer',
     name:'500ml免稀釋噴霧',
+    description:'請填寫商品說明',
     image:'images/spray.jpg',
     unit:'24瓶一箱',
     variants:[
@@ -448,9 +417,38 @@ const PRODUCTS = [
     ]
   },
   {
+  id:'yuanjiao',
+  category:'roundPot',
+  name:'圓角盆',
+  description:'請填寫商品說明',
+  image:'yuanjiao.jpg',
+  unit:'1個',
+  variants:[
+    { label:'3號黑色', basePrice:2, discounts:{ TYGH:2, TYWS:2, TCGH:2, TCWS:2 } },
+    { label:'3號白色', basePrice:3, discounts:{ TYGH:3, TYWS:3, TCGH:3, TCWS:3 } },
+  ]
+},
+
+{
+    id:'seedingtray',
+    category:'nonRoundPot',
+    name:'育苗盤',
+    description:'請填寫商品說明',
+    image:'seedingtray.jpg',
+    unit:'20個/捆',
+    variants:[
+      { label:'育苗盤黑色',   basePrice:28, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'育苗盤白色',   basePrice:38, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'網格育苗盤黑色',   basePrice:30, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'網格育苗盤白色',   basePrice:40, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'加高育苗盤黑色',   basePrice:50, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+    ]
+  },
+  {
     id:'cocobrick110L',
     category:'nonGranule',
     name:'椰塊麻布袋110L',
+    description:'請填寫商品說明',
     image:'images/cocobrick.jpg',
     unit:'110公升',
     variants:[
@@ -470,6 +468,7 @@ const ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw8i1z3RXpotTavf
 let activeCategory = null; // null = 顯示分類總覽
 let searchQuery = '';
 let currentCode = null;
+let pendingScrollProductId = null; // 從「最新產品」點進來時,要捲動並高亮的商品id
 const cart = {}; // key: variantKey -> qty
 
 function variantKey(productId, label){ return productId + '::' + label; }
@@ -535,7 +534,7 @@ function renderFeaturedSection(showHomepage){
   listEl.innerHTML = featured.map(p => {
     const thumb = p.image ? `<img src="${p.image}" alt="${p.name}" data-full="${p.image}">` : '📦';
     return `
-    <div class="featured-card" data-cat="${p.category}">
+    <div class="featured-card" data-cat="${p.category}" data-product="${p.id}">
       <div class="featured-thumb">${thumb}</div>
       <div class="featured-name">${p.name}</div>
     </div>`;
@@ -550,9 +549,11 @@ function renderFeaturedSection(showHomepage){
 
   listEl.querySelectorAll('.featured-card').forEach(card => {
     card.addEventListener('click', () => {
+      // 直接跳到該商品所在分類,並在渲染後捲動、高亮該商品,方便直接下單購買
       activeCategory = card.dataset.cat;
       searchQuery = '';
       document.getElementById('search-input').value = '';
+      pendingScrollProductId = card.dataset.product;
       render();
     });
   });
@@ -595,6 +596,19 @@ function renderProductList(){
 
   listEl.innerHTML = items.map(p => renderProductCard(p)).join('');
   attachListenersWithin(listEl);
+
+  if(pendingScrollProductId){
+    const targetId = pendingScrollProductId;
+    pendingScrollProductId = null;
+    const targetEl = document.getElementById('product-' + targetId);
+    if(targetEl){
+      setTimeout(() => {
+        targetEl.scrollIntoView({ behavior:'smooth', block:'center' });
+        targetEl.classList.add('highlight');
+        setTimeout(() => targetEl.classList.remove('highlight'), 2200);
+      }, 50);
+    }
+  }
 }
 
 function renderProductCard(product){
@@ -624,8 +638,10 @@ function renderProductCard(product){
     </div>`;
   }).join('');
 
+  const descHtml = product.description ? `<div class="product-desc">${product.description}</div>` : '';
+
   return `
-  <div class="product-card">
+  <div class="product-card" id="product-${product.id}">
     <div class="product-head">
       <div class="product-thumb">${thumb}</div>
       <div class="product-title-wrap">
@@ -633,6 +649,7 @@ function renderProductCard(product){
         <div class="product-cat-tag">${CATEGORIES.find(c => c.id === product.category).name}</div>
       </div>
     </div>
+    ${descHtml}
     ${rows}
   </div>`;
 }
