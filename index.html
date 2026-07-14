@@ -34,9 +34,7 @@
   .mono{font-family:'IBM Plex Mono',monospace;}
 
   .top-bar{
-    position:sticky;
-    top:0;
-    z-index:30;
+    position:relative;
     background:linear-gradient(135deg,#ffd83d 0%,#f7a71b 55%,#ef7b1a 100%);
     color:#fff;
     padding:8px 16px 10px;
@@ -88,6 +86,29 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
     background:rgba(255,255,255,0.08); color:#222; font-size:14px;
   }
   .search-row input::placeholder{ color:#666;}
+
+  .top-bar-main{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+  }
+  .top-bar-keywords{
+    flex:1;
+    font-size:15px;
+    font-weight:700;
+    line-height:1.7;
+    color:#fff;
+  }
+  .top-bar-right{
+    flex:0 0 240px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  @media (max-width:640px){
+    .top-bar-main{flex-direction:column;}
+    .top-bar-right{flex:1 1 auto; width:100%;}
+  }
 
   main{max-width:720px; margin:0 auto; padding:18px 16px 0;}
 
@@ -283,16 +304,25 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
         荃富園藝資材批發｜最新商品 &amp; 優惠專區
     </div>
 </div>
-    <div>
-      <label for="discount-code">客戶優惠代碼</label>
-      <div class="code-row">
-        <input id="discount-code" type="text" placeholder="輸入代碼查看您的優惠價" maxlength="10">
-        <button id="apply-code">套用</button>
+    <div class="top-bar-main">
+      <div class="top-bar-keywords">
+        白紅黑火山石　白綠沸石　麥飯石　 竹炭  泥炭土 椰纖椰塊<br>
+        赤玉土　樹皮　蛇木屑　  蛇木板　 稻殼  珍珠石 殺菌殺蟲<br>
+        喜多肉　蛭石　蘭美樂    塑膠盆　 鋁線  蘭美樂 名牌
       </div>
-      <div class="code-status" id="code-status"></div>
-    </div>
-    <div class="search-row">
-      <input id="search-input" type="text" placeholder="搜尋商品名稱,例如:火山石">
+      <div class="top-bar-right">
+        <div>
+          <label for="discount-code">客戶優惠代碼</label>
+          <div class="code-row">
+            <input id="discount-code" type="text" placeholder="輸入代碼查看您的優惠價" maxlength="10">
+            <button id="apply-code">套用</button>
+          </div>
+          <div class="code-status" id="code-status"></div>
+        </div>
+        <div class="search-row">
+          <input id="search-input" type="text" placeholder="搜尋商品名稱,例如:火山石">
+        </div>
+      </div>
     </div>
   </div>
 </div>
