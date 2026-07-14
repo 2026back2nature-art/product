@@ -144,13 +144,16 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
   }
 
   .featured-scroll{
-    display:flex;
+    display:grid;
+    grid-template-rows:repeat(2, auto);
+    grid-auto-flow:column;
+    grid-auto-columns:120px;
     gap:12px;
     overflow-x:auto;
     padding-bottom:6px;
     margin-bottom:18px;
     -webkit-overflow-scrolling:touch;
-  }
+   }
   .featured-card{
     flex:0 0 auto;
     width:120px;
@@ -294,6 +297,17 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
   }
 
   footer{text-align:center; color:var(--stone-500); font-size:12px; padding:24px 16px 0;}
+  .footer-fb{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  margin-top:8px;
+  color:var(--stone-500);
+  text-decoration:none;
+}
+.footer-fb:hover{text-decoration:underline;}
+.footer-fb svg{width:14px; height:14px; flex:0 0 auto;}
+
 </style>
 </head>
 <body>
@@ -313,9 +327,9 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
       </div>
       <div class="top-bar-right">
         <div>
-          <label for="discount-code">客戶優惠代碼</label>
+          <label for="discount-code">客戶優惠代碼(尚未開放)</label>
           <div class="code-row">
-            <input id="discount-code" type="text" placeholder="輸入代碼查看您的優惠價" maxlength="10">
+            <input id="discount-code" type="text" placeholder="代碼功能還在建置中" maxlength="10">
             <button id="apply-code">套用</button>
           </div>
           <div class="code-status" id="code-status"></div>
@@ -366,15 +380,7 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
       <label for="cust-phone">聯絡電話</label>
       <input id="cust-phone" type="tel" placeholder="請輸入聯絡電話">
     </div>
-    <div class="field">
-      <label for="cust-address">收件地址</label>
-      <input id="cust-address" type="text" placeholder="請輸入收件地址">
-    </div>
-    <div class="field">
-      <label for="cust-note">備註(選填)</label>
-      <textarea id="cust-note" placeholder="其他需求或指定到貨時間"></textarea>
-    </div>
-    <div class="error-text" id="form-error">請填寫姓名、電話、地址,並至少選購一項商品。</div>
+    <div class="error-text" id="form-error">請填寫姓名電話、並至少選購一項商品。</div>
     <button class="submit-btn" id="submit-order">送出訂單</button>
     <div class="send-status" id="send-status"></div>
   </div>
@@ -382,7 +388,7 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
   <div class="card" id="order-result">
     <h2 style="font-size:16px; margin-bottom:10px;">訂單內容</h2>
     <div class="result-box" id="result-text"></div>
-    <button class="copy-btn" id="copy-order">複製訂單內容(備用)</button>
+    <button class="copy-btn" id="copy-order">請複製訂單內容傳給Jaco Line ID:d409122001</button>
   </div>
 
 </main>
@@ -393,7 +399,12 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
   <button id="goto-checkout">前往結帳</button>
 </div>
 
-<footer>商品資料陸續建置中,如需要的商品尚未上架請直接與我們聯繫。</footer>
+<footer>Line:d409122001 有問題可加賴聯絡或播電話0963557051。
+   <a href="https://www.facebook.com/cfgardening" target="_blank" rel="noopener" class="footer-fb">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z" fill="#1877F2"/></svg>
+    荃富園藝臉書
+  </a>
+</footer>
 
 <script>
 /* =========================================================
@@ -605,7 +616,7 @@ function renderFeaturedSection(showHomepage){
   }
 
   // 取「最新加入」的商品:PRODUCTS 陣列裡越後面新增的越新,最多顯示6項,不足6項就全部顯示
-  const featured = PRODUCTS.slice(-6);
+  const featured = PRODUCTS.slice(-12);
   if(featured.length === 0){
     section.style.display = 'none';
     return;
