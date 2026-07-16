@@ -185,10 +185,13 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
   }
   .product-head{display:flex; gap:12px; margin-bottom:6px;}
   .product-thumb{
-    width:52px; height:52px; border-radius:8px; background:var(--stone-200); flex-shrink:0;
+    display:flex; gap:4px; flex-shrink:0;
+  }
+  .product-thumb-item{
+    width:52px; height:52px; border-radius:8px; background:var(--stone-200);
     display:flex; align-items:center; justify-content:center; overflow:hidden; font-size:20px; color:var(--stone-500);
   }
-  .product-thumb img{width:100%; height:100%; object-fit:cover; cursor:zoom-in;}
+  .product-thumb-item img{width:100%; height:100%; object-fit:cover; cursor:zoom-in;}
   .product-title-wrap{flex:1;}
   .product-name{font-size:15px; font-weight:600;}
   .product-cat-tag{font-size:11px; color:var(--stone-500); margin-top:2px;}
@@ -426,7 +429,7 @@ const PRODUCTS = [
     category:'nonGranule',
     name:'培養土 加沙土',
     description:'CP值高，戶外土',
-    image:'images/soiltenkg.jpg',
+    images:['images/soiltenkg.jpg', 'images/soil23kg.jpg'],
     unit:'10/25kg 包',
     variants:[
       { label:'培養土10kg',   basePrice:60, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
@@ -704,9 +707,10 @@ function renderProductList(){
 }
 
 function renderProductCard(product){
-  const thumb = product.image
-    ? `<img src="${product.image}" alt="${product.name}" data-full="${product.image}">`
-    : '📦';
+  const imageList = product.images || (product.image ? [product.image] : []);
+  const thumb = imageList.length
+    ? imageList.map(src => `<div class="product-thumb-item"><img src="${src}" alt="${product.name}" data-full="${src}"></div>`).join('')
+    : '<div class="product-thumb-item">📦</div>';
   const rows = product.variants.map(v => {
     const price = currentPriceFor(v);
     const discounted = price < v.basePrice;
