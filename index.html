@@ -349,7 +349,7 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
 
   <div id="featured-section" style="display:none;">
     <div class="section-title">
-      <h2>✨ 最新產品</h2>
+      <h2>✨ 最新產品(點商品文字可進入下單區)</h2>
     </div>
     <div id="featured-list" class="featured-scroll"></div>
   </div>
@@ -431,11 +431,25 @@ const PRODUCTS = [
     description:'CP值高，戶外土',
     image:'images/soiltenkg.jpg',
     images:['images/soiltenkg.jpg', 'images/soil23kg.jpg'],
-    unit:'10/25kg 包',
+    unit:'10/23kg 包',
     variants:[
-      { label:'培養土10kg',   basePrice:60, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-      { label:'加沙培養土10kg',   basePrice:70, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
-      { label:'培養土25kg',   basePrice:150, discounts:{ TYGH:330, TYWS:310, TCGH:325, TCWS:300 } },
+      { label:'培養土10kg',   basePrice:60, discounts:{ TYGH:60, TYWS:60, TCGH:60, TCWS:55 } },
+      { label:'加沙培養土10kg',   basePrice:70, discounts:{ TYGH:70, TYWS:70, TCGH:70, TCWS:65 } },
+      { label:'培養土23kg',   basePrice:150, discounts:{ TYGH:150, TYWS:150, TCGH:140, TCWS:130 } },
+    ]
+  },
+  {
+    id:'fernstick',
+    category:'nonGranule',
+    name:'蛇木屑',
+    description:'進口原包裝',
+    image:'images/fernstick.jpg',
+    images:['images/fernstick.jpg', 'images/fernstick_all.jpg'],
+    unit:'60-70公升 包',
+    variants:[
+      { label:'2號(長 長度)',   basePrice:900, discounts:{ TYGH:900, TYWS:900, TCGH:900, TCWS:900 } },
+      { label:'2B(中 長度)',   basePrice:900, discounts:{ TYGH:900, TYWS:900, TCGH:900, TCWS:900 } },
+      { label:'3號(短 長度)',   basePrice:900, discounts:{ TYGH:900, TYWS:900, TCGH:900, TCWS:900 } },
     ]
   },
   {
