@@ -311,6 +311,22 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
 .footer-fb:hover{text-decoration:underline;}
 .footer-fb svg{width:14px; height:14px; flex:0 0 auto;}
 
+  .content-wrap{
+    position:relative;
+  }
+  .side-video{
+    display:none;
+    position:absolute;
+    left:calc(50% - 360px - 24px - 280px);
+    top:0;
+    width:280px;
+    z-index:5;
+  }
+  .side-video iframe{width:100%; border:none; overflow:hidden; display:block;}
+  @media (min-width:1400px){
+    .side-video{display:block;}
+  }
+
 </style>
 </head>
 <body>
@@ -343,6 +359,14 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
       </div>
     </div>
   </div>
+</div>
+
+<div class="content-wrap">
+<div class="side-video">
+  <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1810412326807977&show_text=false&width=280"
+    width="280" height="500" scrolling="no" frameborder="0"
+    allowfullscreen="true"
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 </div>
 
 <main>
@@ -395,6 +419,7 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
   </div>
 
 </main>
+</div>
 
 <div class="cart-bar" id="cart-bar">
   <div class="info">已選購 <span id="cart-count">0</span> 項</div>
