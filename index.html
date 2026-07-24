@@ -605,16 +605,16 @@ const PRODUCTS = [
   {
     id:'seedingtray',
     category:'nonRoundPot',
-    name:'育苗盤',
-    description:'請填寫商品說明',
+    name:'育苗盤 網格/加高',
+    description:'育苗盤29*49.5*6.5cm 網格育苗盤29*49.5*6.5cm 加高育苗盤加高至11cm',
     image:'images/seedingtray.jpg',
     unit:'20個/捆',
     variants:[
-      { label:'育苗盤黑色',   basePrice:28, discounts:{ TTFF:330, LACS:310, TCGH:325, ESWS:300 } },
-      { label:'育苗盤白色',   basePrice:38, discounts:{ TTFF:330, LACS:310, TCGH:325, ESWS:300 } },
-      { label:'網格育苗盤黑色',   basePrice:30, discounts:{ TTFF:330, LACS:310, TCGH:325, ESWS:300 } },
-      { label:'網格育苗盤白色',   basePrice:40, discounts:{ TTFF:330, LACS:310, TCGH:325, ESWS:300 } },
-      { label:'加高育苗盤黑色',   basePrice:50, discounts:{ TTFF:330, LACS:310, TCGH:325, ESWS:300 } },
+      { label:'育苗盤黑色',   basePrice:28, discounts:{ TTFF:28, LACS:28, TCGH:28, ESWS:28 } },
+      { label:'育苗盤白色',   basePrice:38, discounts:{ TTFF:38, LACS:38, TCGH:38, ESWS:38 } },
+      { label:'網格育苗盤黑色',   basePrice:30, discounts:{ TTFF:30, LACS:30, TCGH:30, ESWS:30 } },
+      { label:'網格育苗盤白色',   basePrice:40, discounts:{ TTFF:40, LACS:40, TCGH:40, ESWS:40 } },
+      { label:'加高育苗盤黑色',   basePrice:50, discounts:{ TTFF:50, LACS:50, TCGH:50, ESWS:50 } },
     ]
   },
   {
@@ -626,20 +626,65 @@ const PRODUCTS = [
     images:['images/moss5kg.jpg', 'images/.jpg'],
     unit:'1個',
     variants:[
-      { label:'智利水苔5kg(紫標)',   basePrice:1450, discounts:{ TTFF:1400, LACS:1400, TCGH:1400, ESWS:1400 } },
+      { label:'智利水苔5kg(紫標)',   basePrice:1450, discounts:{ TTFF:1400, LACS:1350, TCGH:1400, ESWS:1400 } },
+    ]
+  },
+  {
+    id:'zhishenban',
+    category:'nonRoundPot',
+    name:'日式植生板',
+    description:'台製(18*13*1.3cm)',
+    image:'images/zhishenban.jpg',
+    images:['images/zhishenban.jpg', 'images/zhishenban.jpg'],
+    unit:'185個/箱',
+    variants:[
+      { label:'白色',   basePrice:15, discounts:{ TTFF:15, LACS:15, TCGH:15, ESWS:15 } },
+      { label:'黑色',   basePrice:15, discounts:{ TTFF:15, LACS:15, TCGH:15, ESWS:15 } },
+    ]
+  },
+  {
+    id:'zhichuangban',
+    category:'nonRoundPot',
+    name:'植床板',
+    description:'台製，非上述尺寸可另外訂購',
+    image:'images/zhichuangban.jpg',
+    images:['images/zhichuangban.jpg', 'images/zhichuangban2.jpg'],
+    unit:'片',
+    variants:[
+      { label:'11.3*20寸',   basePrice:86, discounts:{ TTFF:86, LACS:86, TCGH:86, ESWS:86 } },
+      { label:'15*30寸',   basePrice:210, discounts:{ TTFF:210, LACS:210, TCGH:210, ESWS:210 } },
+      { label:'3*5尺',   basePrice:310, discounts:{ TTFF:310, LACS:310, TCGH:310, ESWS:310 } },
+      { label:'3*6尺',   basePrice:330, discounts:{ TTFF:330, LACS:330, TCGH:330, ESWS:330 } },
+    ]
+  },
+  {
+    id:'lianhuapen',
+    category:'roundPot',
+    name:'蓮花盆 荷花盆',
+    description:'底部平坦不易倒',
+    image:'images/lianhuapen.jpg',
+    images:['images/lianhuapen.jpg', 'images/lianhuapen2.jpg'],
+    unit:'個',
+    variants:[
+      { label:'6寸',   basePrice:23.4, discounts:{ TTFF:23.4, LACS:11.7, TCGH:23.4, ESWS:23.4 } },
+      { label:'8寸',   basePrice:39, discounts:{ TTFF:39, LACS:19.5, TCGH:39, ESWS:39 } },
+      { label:'1尺',   basePrice:65, discounts:{ TTFF:65, LACS:32.5, TCGH:65, ESWS:65 } },
+      { label:'1尺2',   basePrice:91, discounts:{ TTFF:91, LACS:45.5, TCGH:91, ESWS:91 } },
+      { label:'1尺4',   basePrice:117, discounts:{ TTFF:117, LACS:58.5, TCGH:117, ESWS:117 } },
+      { label:'1尺6',   basePrice:184.6, discounts:{ TTFF:184.6, LACS:92.3, TCGH:184.6, ESWS:184.6 } },
     ]
   },
   {
     id:'cocobrick110L',
     category:'nonGranule',
     name:'椰塊麻布袋110L',
-    description:'請填寫商品說明',
+    description:'水洗椰塊，已解壓縮，可直接使用',
     image:'images/cocobrick.jpg',
     unit:'110公升',
     variants:[
-      { label:'1公分',   basePrice:510, discounts:{} },
-      { label:'2公分',   basePrice:510, discounts:{} },     
-      { label:'3公分',   basePrice:410, discounts:{} }
+      { label:'1公分',   basePrice:510, discounts:{TTFF:510, LACS:510, TCGH:510, ESWS:510} },
+      { label:'2公分',   basePrice:510, discounts:{TTFF:510, LACS:510, TCGH:510, ESWS:510} },     
+      { label:'3公分',   basePrice:410, discounts:{TTFF:410, LACS:410, TCGH:410, ESWS:410} }
     ]
   }
   // 之後新增商品就是在這裡(或對應分類)繼續加物件
