@@ -439,8 +439,8 @@ color:#fff; font-weight:600; font-size:13px; cursor:pointer;
    商品資料區 — 之後新增商品只需要在對應分類陣列裡加物件即可
    ========================================================= */
 const CATEGORIES = [
-  { id:'granule',     name:'顆粒介質' },
-  { id:'nonGranule',  name:'非顆粒介質' },
+  { id:'granule',     name:'顆粒介質(火山石、赤玉土)' },
+  { id:'nonGranule',  name:'非顆粒介質(泥炭土、椰塊)' },
   { id:'roundPot',    name:'圓形塑膠盆' },
   { id:'nonRoundPot', name:'非圓形塑膠盆' },
   { id:'fertilizer',  name:'肥料' },
@@ -501,6 +501,115 @@ const PRODUCTS = [
       { label:'3-8mm',   basePrice:400, discounts:{ TTFF:330, LACS:310, TCGH:325, ESWS:300 } },
       { label:'8-15mm',  basePrice:400, discounts:{ TTFF:330, LACS:310, TCGH:325, ESWS:300 } },
       { label:'15-25mm', basePrice:400, discounts:{ TTFF:330, LACS:310, TCGH:325, ESWS:300 } }
+    ]
+  },
+  {
+    id:'innihioshanshi',
+    category:'granule',
+    name:'印尼黃火山石',
+    description:'填充時約25kg，會因水分蒸發而減輕',
+    image:'images/innihioshanshi.jpg',
+    images:['images/innihioshanshi.jpg', 'images/innihioshanshi.jpg'],
+    unit:'25kg/包',
+    variants:[
+      { label:'1-3mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'3-5mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'5-8mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'8-10mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+    ]
+  },
+  {
+    id:'heihuoshanshi',
+    category:'granule',
+    name:'大陸黑火山石',
+    description:'填充時約25kg，會因水分蒸發而減輕',
+    image:'images/heihuoshanshi.jpg',
+    images:['images/heihuoshanshi.jpg', 'images/heihuoshanshi2.jpg', 'images/heihuoshanshi3.jpg'],
+    unit:'25kg/包',
+    variants:[
+      { label:'1-3mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'3-6mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'5-8mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'10-20mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'3-5公分(30-50mm)',   basePrice:370, discounts:{ TTFF:345, LACS:345, TCGH:370, ESWS:370 } },
+      { label:'5-10公分',   basePrice:370, discounts:{ TTFF:345, LACS:345, TCGH:370, ESWS:370 } },
+      { label:'10-20公分',   basePrice:370, discounts:{ TTFF:345, LACS:345, TCGH:370, ESWS:370 } },
+    ]
+  },
+  {
+    id:'honghuoshanshi',
+    category:'granule',
+    name:'大陸紅火山石',
+    description:'填充時約25kg，會因水分蒸發而減輕',
+    image:'images/honghuoshanshi.jpg',
+    images:['images/honghuoshanshi.jpg', 'images/honghuoshanshi2.jpg'],
+    unit:'25kg/包',
+    variants:[
+      { label:'1-3mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'3-6mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'5-8mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'10-20mm',   basePrice:350, discounts:{ TTFF:325, LACS:325, TCGH:350, ESWS:350 } },
+      { label:'3-5公分(30-50mm)',   basePrice:370, discounts:{ TTFF:345, LACS:345, TCGH:370, ESWS:370 } },
+      { label:'5-10公分',   basePrice:370, discounts:{ TTFF:345, LACS:345, TCGH:370, ESWS:370 } },
+    ]
+  },
+  {
+    id:'sanbenxian',
+    category:'granule',
+    name:'正三本線赤玉土',
+    description:'最硬赤玉土，14L',
+    image:'images/sanbenxian.jpg',
+    images:['images/sanbenxian.jpg', 'images/sanbenxian2.jpg'],
+    unit:'14L/包',
+    variants:[
+      { label:'細粒14L',   basePrice:320, discounts:{ TTFF:320, LACS:320, TCGH:320, ESWS:320 } },
+      { label:'小粒14L',   basePrice:320, discounts:{ TTFF:320, LACS:320, TCGH:320, ESWS:320 } },
+      { label:'中粒14L',   basePrice:300, discounts:{ TTFF:260, LACS:300, TCGH:300, ESWS:300 } },
+      { label:'大粒14L',   basePrice:300, discounts:{ TTFF:260, LACS:300, TCGH:300, ESWS:300 } },
+    ]
+  },
+  {
+    id:'dunpai',
+    category:'granule',
+    name:'盾牌赤玉土',
+    description:'價格便宜的赤玉土，14L',
+    image:'images/dunpai.jpg',
+    images:['images/dunpai.jpg', 'images/dunpai2.jpg'],
+    unit:'14L/包',
+    variants:[
+      { label:'細粒14L',   basePrice:300, discounts:{ TTFF:300, LACS:300, TCGH:300, ESWS:300 } },
+      { label:'小粒14L',   basePrice:300, discounts:{ TTFF:300, LACS:300, TCGH:300, ESWS:300 } },
+      { label:'中粒14L',   basePrice:300, discounts:{ TTFF:300, LACS:300, TCGH:300, ESWS:300 } },
+      { label:'大粒14L',   basePrice:300, discounts:{ TTFF:300, LACS:300, TCGH:300, ESWS:300 } },
+    ]
+  },
+  {
+    id:'tongshengsha',
+    category:'granule',
+    name:'桐生砂',
+    description:'選別桐生砂，14L日本進口原包裝',
+    image:'images/tongshengsha.jpg',
+    images:['images/tongshengsha.jpg', 'images/tongshengsha2.jpg'],
+    unit:'14L/包',
+    variants:[
+      { label:'細粒14L',   basePrice:320, discounts:{ TTFF:320, LACS:320, TCGH:320, ESWS:320 } },
+      { label:'小粒14L',   basePrice:320, discounts:{ TTFF:320, LACS:320, TCGH:320, ESWS:320 } },
+      { label:'中粒14L',   basePrice:320, discounts:{ TTFF:320, LACS:320, TCGH:320, ESWS:320 } },
+    ]
+  },
+  {
+    id:'lvzhaotu',
+    category:'granule',
+    name:'鹿沼土',
+    description:'鹿沼土，16日本進口原包裝',
+    image:'images/lvzhaotu.jpg',
+    images:['images/lvzhaotu.jpg', 'images/lvzhaotu2.jpg'],
+    unit:'16L/包',
+    variants:[
+      { label:'細粒',   basePrice:300, discounts:{ TTFF:300, LACS:300, TCGH:300, ESWS:300 } },
+      { label:'小粒',   basePrice:300, discounts:{ TTFF:300, LACS:300, TCGH:300, ESWS:300 } },
+      { label:'中粒',   basePrice:300, discounts:{ TTFF:300, LACS:300, TCGH:300, ESWS:300 } },
+      { label:'大粒',   basePrice:300, discounts:{ TTFF:300, LACS:300, TCGH:300, ESWS:300 } },
     ]
   },
   {
@@ -623,10 +732,14 @@ const PRODUCTS = [
     name:'智利水苔5kg',
     description:'重量會因水分蒸發而減少',
     image:'images/moss5kg.jpg',
-    images:['images/moss5kg.jpg', 'images/.jpg'],
+    images:['images/moss5kg.jpg', 'images/mosssmall.jpg'],
     unit:'1個',
     variants:[
       { label:'智利水苔5kg(紫標)',   basePrice:1450, discounts:{ TTFF:1400, LACS:1350, TCGH:1400, ESWS:1400 } },
+      { label:'智利水苔小包裝150g)',   basePrice:130, discounts:{ TTFF:120, LACS:120, TCGH:120, ESWS:120 } },
+      { label:'智利水苔500g)',   basePrice:360, discounts:{ TTFF:360, LACS:360, TCGH:360, ESWS:360 } },
+      { label:'智利水苔1kg)',   basePrice:450, discounts:{ TTFF:450, LACS:450, TCGH:450, ESWS:450 } },
+      { label:'紐西蘭水苔AAA 1kg)',   basePrice:1500, discounts:{ TTFF:1500, LACS:1500, TCGH:1500, ESWS:1500 } },
     ]
   },
   {
@@ -672,6 +785,57 @@ const PRODUCTS = [
       { label:'1尺2',   basePrice:91, discounts:{ TTFF:91, LACS:45.5, TCGH:91, ESWS:91 } },
       { label:'1尺4',   basePrice:117, discounts:{ TTFF:117, LACS:58.5, TCGH:117, ESWS:117 } },
       { label:'1尺6',   basePrice:184.6, discounts:{ TTFF:184.6, LACS:92.3, TCGH:184.6, ESWS:184.6 } },
+    ]
+  },
+  {
+    id:'yanglanpen',
+    category:'roundPot',
+    name:'洋蘭盆',
+    description:'可另購鐵線，吊起來',
+    image:'images/yanglanpen.jpg',
+    images:['images/yanglanpen.jpg', 'images/yanglanpen2.jpg'],
+    unit:'個',
+    variants:[
+      { label:'平底 3.5吋',   basePrice:3, discounts:{ TTFF:3, LACS:3, TCGH:3, ESWS:3 } },
+      { label:'平底 4吋',   basePrice:5, discounts:{ TTFF:5, LACS:5, TCGH:5, ESWS:5 } },
+      { label:'平底 4.5吋',   basePrice:6, discounts:{ TTFF:6, LACS:6, TCGH:6, ESWS:6 } },
+      { label:'平底 5吋',   basePrice:7, discounts:{ TTFF:7, LACS:7, TCGH:7, ESWS:7 } },
+      { label:'平底 6吋',   basePrice:10, discounts:{ TTFF:10, LACS:10, TCGH:10, ESWS:10 } },
+      { label:'凸底 6.5吋',   basePrice:15, discounts:{ TTFF:15, LACS:15, TCGH:15, ESWS:15 } },
+      { label:'凸底 7吋',   basePrice:20, discounts:{ TTFF:20, LACS:20, TCGH:20, ESWS:20 } },
+      { label:'凸底 7.5吋',   basePrice:24, discounts:{ TTFF:24, LACS:24, TCGH:24, ESWS:24 } },
+      { label:'凸底 8吋',   basePrice:28, discounts:{ TTFF:28, LACS:28, TCGH:28, ESWS:28 } },
+      { label:'凸底 1尺',   basePrice:50, discounts:{ TTFF:50, LACS:50, TCGH:50, ESWS:50 } },
+    ]
+  },
+  {
+    id:'lvxian',
+    category:'hardware',
+    name:'銀鋁線 黑鋁線',
+    description:'1.0-1.5mm較貴，2.0-6.0一樣價格',
+    image:'images/lvxian.jpg',
+    images:['images/lvxian.jpg', 'images/lvxian2.jpg'],
+    unit:'1kg/捆',
+    variants:[
+      { label:'銀鋁線1.0-1.5mm',   basePrice:250, discounts:{ TTFF:250, LACS:250, TCGH:250, ESWS:250 } },
+      { label:'銀鋁線2.0-6.0mm',   basePrice:230, discounts:{ TTFF:230, LACS:230, TCGH:230, ESWS:230 } },
+      { label:'黑鋁線1.0-1.5mm',   basePrice:330, discounts:{ TTFF:330, LACS:330, TCGH:330, ESWS:330 } },
+      { label:'黑鋁線2.0-6.0mm',   basePrice:310, discounts:{ TTFF:310, LACS:310, TCGH:310, ESWS:310 } },
+    ]
+  },
+  {
+    id:'fushengpen',
+    category:'nonRoundPot',
+    name:'附生盆',
+    description:'鹿角蕨 蘭花 大量使用',
+    image:'images/fushengpen.jpg',
+    images:['images/fushengpen.jpg', 'images/fushengpen2.jpg'],
+    unit:'個',
+    variants:[
+      { label:'黑色 6寸',   basePrice:12, discounts:{ TTFF:10, LACS:10, TCGH:12, ESWS:12 } },
+      { label:'黑色 8寸',   basePrice:24, discounts:{ TTFF:20, LACS:20, TCGH:24, ESWS:24 } },
+      { label:'黑色 1尺',   basePrice:35, discounts:{ TTFF:28, LACS:28, TCGH:35, ESWS:35 } },
+      { label:'白色 1尺',   basePrice:40, discounts:{ TTFF:30, LACS:30, TCGH:40, ESWS:40 } },
     ]
   },
   {
